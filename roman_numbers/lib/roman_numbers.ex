@@ -47,26 +47,13 @@ defmodule RomanNumbers do
     convert(arabic_number, @roman_numbers)
   end
 
-  defp convert(arabic_number, base) do
-    convert("", arabic_number, base)
-  end
+  defp convert(arabic_number, base), do: convert("", arabic_number, base)
+  defp convert(roman_number_acc, _arabic_number, []), do: roman_number_acc
 
-  defp convert(roman_number_acc, _arabic_number, []) do
-    roman_number_acc
-  end
-
-  defp convert(
-         roman_number_acc,
-         arabic_number,
-         base = [{arabic_base, roman_base} | rest]
-       ) do
+  defp convert(roman_number_acc, arabic_number, base = [{arabic_base, roman_base} | rest]) do
     case arabic_number >= arabic_base do
       true ->
-        convert(
-          Enum.join([roman_number_acc, roman_base], ""),
-          arabic_number - arabic_base,
-          base
-        )
+        convert(Enum.join([roman_number_acc, roman_base], ""), arabic_number - arabic_base, base)
 
       false ->
         convert(roman_number_acc, arabic_number, rest)
