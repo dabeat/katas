@@ -1,18 +1,6 @@
 defmodule RunLengthEncoding do
   @moduledoc """
   Documentation for RunLengthEncoding.
-
-    defp increase_last_accumulated(acc) do
-    last_accumulated = List.last(acc)
-
-    updated_value = 
-      case last_accumulated do
-        {value, occurrences} -> {value, occurrences + 1}
-        value -> {value, 2}
-      end
-    
-    List.replace_at(acc, -1, updated_value)
-  end
   """
 
   @doc """
